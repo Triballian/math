@@ -35,7 +35,7 @@ func main() {
 		//line := in.ReadString(" ")
 		text, _ := reader.ReadString('\n')
 		fmt.Println(text)
-		if text == "quit" {
+		if text == "quit\n" {
 			break
 		}
 
