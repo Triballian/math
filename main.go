@@ -35,9 +35,9 @@ func main() {
 		//line := in.ReadString(" ")
 		text, _ := reader.ReadString('\n')
 		fmt.Println(text)
-		//if in == "quit" {
-		//	break
-		//}
+		if text == "quit" {
+			break
+		}
 
 		//remove spaces -1 teslls Replace that there is no limit to the number of replacements
 		//fmtdequation := strings.Replace(equation, " ", "", -1)
