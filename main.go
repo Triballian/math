@@ -11,6 +11,9 @@ import (
 	"os"
 	//"io"
 	//"strings"
+	"log"
+	"strings"
+	"unicode"
 )
 
 //numofterms := 2
@@ -33,11 +36,26 @@ func main() {
 		fmt.Println("Type the equation to be identified as either a function or not a function")
 		fmt.Print("\n>>")
 		//line := in.ReadString(" ")
-		text, _ := reader.ReadString('\n')
-		fmt.Println(text)
+		text, err := reader.ReadString('\n')
+		//element := strings.Split(text, " ")
+		//var t rune
+		var ftext string
+
+		ftext = strings.Map(func(t rune) rune {
+			if unicode.IsSpace(t) {
+				return -1
+			}
+			return t
+		}, text)
+
+		if err != nil {
+			log.Fatal(err)
+		}
 		if text == "quit\n" {
+			fmt.Println("Exited at user request.")
 			break
 		}
+		fmt.Println(ftext)
 
 		//remove spaces -1 teslls Replace that there is no limit to the number of replacements
 		//fmtdequation := strings.Replace(equation, " ", "", -1)
