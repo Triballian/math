@@ -33,10 +33,13 @@ func main() {
 	for {
 
 		reader := bufio.NewReader(os.Stdin)
-		fmt.Println("Type the equation to be identified as either a function or not a function")
+		fmt.Println("\nType the equation to be identified as either a function or not a function")
 		fmt.Print("\n>>")
 		//line := in.ReadString(" ")
 		text, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatal(err)
+		}
 		//element := strings.Split(text, " ")
 		//var t rune
 		var ftext string
@@ -48,14 +51,13 @@ func main() {
 			return t
 		}, text)
 
-		if err != nil {
-			log.Fatal(err)
-		}
+		equationsides := strings.Split(ftext, `=`)
+
 		if text == "quit\n" {
 			fmt.Println("Exited at user request.")
 			break
 		}
-		fmt.Println(ftext)
+		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", equationsides[0], equationsides[1])
 
 		//remove spaces -1 teslls Replace that there is no limit to the number of replacements
 		//fmtdequation := strings.Replace(equation, " ", "", -1)
