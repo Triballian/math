@@ -51,13 +51,13 @@ func main() {
 			return t
 		}, text)
 
-		equationsides := strings.Split(ftext, `=`)
+		expression := strings.Split(ftext, `=`)
 
 		if text == "quit\n" {
 			fmt.Println("Exited at user request.")
 			break
 		}
-		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", equationsides[0], equationsides[1])
+		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", expression[0], expression[1])
 
 		//remove spaces -1 teslls Replace that there is no limit to the number of replacements
 		//fmtdequation := strings.Replace(equation, " ", "", -1)
