@@ -10,14 +10,19 @@ import (
 	"fmt"
 	"os"
 	//"io"
-	//"strings"
+	"strings"
 	"log"
 	"strings"
 	"unicode"
 )
 
 
+
+
+
 func main() {
+
+	primaryoperators := []string{'+', '-'}
 	//infinite loop to continue evaluating the input expressions
 
 	for {
