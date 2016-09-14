@@ -84,7 +84,7 @@ func main() {
 			}
 			if s == `+` || s == `-`{
 				fmt.Printf("bufferstring is %s", bufferstrng)
-				bs = strings.Join(bufferstrng, " ")
+				bs = strings.Join(bufferstrng, "")
 				fmt.Printf("bs is %s \n", bs)
 				//i, _ = strconv.ParseInt(bs, 10, 64)
 				exzeronumbers = append(exzeronumbers, bs)
@@ -100,7 +100,7 @@ func main() {
 			fmt.Printf("The value is:%c \n", value)
 			fmt.Printf("counter is %s \n", counter)
 			if counter == len(expression[0]){
-				bs = strings.Join(bufferstrng, " ")
+				bs = strings.Join(bufferstrng, "")
 				exzeronumbers = append(exzeronumbers, bs)
 			}
 
