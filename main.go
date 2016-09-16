@@ -12,14 +12,12 @@ import (
 	//"io"
 	"log"
 	//"strings"
-	"unicode"
 	"strings"
+	"unicode"
 	//"strconv"
-
 )
 
 func main() {
-
 
 	// primaryoperators := []string{`+`, `-`}
 	//infinite loop to continue evaluating the input expressions
@@ -65,15 +63,12 @@ func main() {
 		var bs string
 		counter := 0
 
-
-
 		for _, value := range expression[0] {
 			counter++
 
 			//s, _ := strconv.Atoi(value)
 
 			s := fmt.Sprintf("%c", value)
-
 
 			if len(bufferstrng) == 0 {
 				//s = fmt.Sprintf("%c", value)
@@ -82,7 +77,7 @@ func main() {
 
 				continue
 			}
-			if s == `+` || s == `-`{
+			if s == `+` || s == `-` {
 				fmt.Printf("bufferstring is %s", bufferstrng)
 				bs = strings.Join(bufferstrng, "")
 				fmt.Printf("bs is %s \n", bs)
@@ -94,18 +89,12 @@ func main() {
 			}
 			bufferstrng = append(bufferstrng, s)
 
-
-
-
 			fmt.Printf("The value is:%c \n", value)
 			fmt.Printf("counter is %s \n", counter)
-			if counter == len(expression[0]){
+			if counter == len(expression[0]) {
 				bs = strings.Join(bufferstrng, "")
 				exzeronumbers = append(exzeronumbers, bs)
 			}
-
-
-
 
 		}
 		fmt.Printf("exzeronumbers :%s \n", exzeronumbers)
