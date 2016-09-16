@@ -33,16 +33,19 @@ func main() {
 			log.Fatal(err)
 		}
 
-		var ftext string
+		ftext := make([]string, 0, 10)
+		var fstring string
 
-		ftext = strings.Map(func(t rune) rune {
-			if unicode.IsSpace(t) {
-				return -1
+		for _, value := range text {
+			if unicode.IsSpace(value) {
+				continue
 			}
-			return t
-		}, text)
+			fstring = fmt.Sprintf("%c", value)
+			ftext = append(ftext, fstring)
+		}
+		fstring = strings.Join(ftext, "")
 
-		expression := strings.Split(ftext, `=`)
+		expression := strings.Split(fstring, `=`)
 
 		if text == "quit\n" {
 			fmt.Println("Exited at user request.")
@@ -78,7 +81,7 @@ func main() {
 				continue
 			}
 			if s == `+` || s == `-` {
-				fmt.Printf("bufferstring is %s", bufferstrng)
+				fmt.Printf("bufferstring is %s \n", bufferstrng)
 				bs = strings.Join(bufferstrng, "")
 				fmt.Printf("bs is %s \n", bs)
 				//i, _ = strconv.ParseInt(bs, 10, 64)
@@ -90,7 +93,7 @@ func main() {
 			bufferstrng = append(bufferstrng, s)
 
 			fmt.Printf("The value is:%c \n", value)
-			fmt.Printf("counter is %s \n", counter)
+			fmt.Printf("counter is %d \n", counter)
 			if counter == len(expression[0]) {
 				bs = strings.Join(bufferstrng, "")
 				exzeronumbers = append(exzeronumbers, bs)
