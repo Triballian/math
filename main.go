@@ -23,7 +23,7 @@ func mkslice (s string) []string{
 	for _, v := range s{
 		ss = append(ss, fmt.Sprintf("%c", v))
 	}
-	fmt.Printf("mkslice ss is :%s\n", ss)
+
 	return ss
 
 }
