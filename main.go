@@ -16,11 +16,12 @@ import (
 	"unicode"
 	//"strconv"
 )
-func mkslice (s string) []string{
+
+func mkslice(s string) []string {
 
 	slength := len(s)
 	ss := make([]string, 0, slength)
-	for _, v := range s{
+	for _, v := range s {
 		ss = append(ss, fmt.Sprintf("%c", v))
 	}
 
@@ -84,20 +85,14 @@ func main() {
 		var bs string
 		counter := 0
 
-		for _, value := range answerex {
+		for _, value := range opex {
 			counter++
 
 			//s, _ := strconv.Atoi(value)
 
 			s := fmt.Sprintf("%c", value)
 
-			if len(bufferstrng) == 0 {
-				//s = fmt.Sprintf("%c", value)
 
-				bufferstrng = append(bufferstrng, s)
-
-				continue
-			}
 			if s == `+` || s == `-` {
 				fmt.Printf("bufferstring is %s \n", bufferstrng)
 				bs = strings.Join(bufferstrng, "")
@@ -113,6 +108,7 @@ func main() {
 			fmt.Printf("The value is:%c \n", value)
 			fmt.Printf("counter is %d \n", counter)
 			if counter == len(expression[0]) {
+				fmt.Println(counter)
 				bs = strings.Join(bufferstrng, "")
 				exopnumbers = append(exopnumbers, bs)
 			}
