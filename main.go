@@ -55,6 +55,7 @@ func main() {
 		fstring = strings.Join(ftext, "")
 
 		expression := strings.Split(fstring, `=`)
+		//fmt.Println(expression)
 
 		if text == "quit\n" {
 			fmt.Println("Exited at user request.")
@@ -72,7 +73,7 @@ func main() {
 			opex = mkslice(expression[0])
 		}
 
-		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", expression[0], opex)
+		fmt.Printf("operation side of equation:%s, answer side of equtioin:%s\n", answerex, opex)
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
 		bufferstrng := make([]string, 0, 10)
