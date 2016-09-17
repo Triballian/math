@@ -117,9 +117,9 @@ func main() {
 		}
 		fmt.Printf("exzeronumbers :%s \n", exopnumbers)
 		fmt.Printf("exzerooperators :%s \n", opexoperators)
-		if len(exopnumbers > 1) {
+		if len(exopnumbers) > 1 {
 			for i, _ := range exopnumbers {
-				if len(exopnumbers[i] > 1) {
+				if len(exopnumbers[i]) > 1 {
 					for _, value := range exopnumbers[i] {
 						if value == "x" {
 							fmt.Printf("number %s, when x = 0 is 0", exopnumbers[i])
