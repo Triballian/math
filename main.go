@@ -21,7 +21,7 @@ func mkslice (s string) []string{
 	slength := len(s)
 	ss := make([]string, slength)
 	for _, v := range s{
-		ss = append(ss, v)
+		ss = append(ss, fmt.Sprintf("%c", v))
 	}
 	return ss
 }
@@ -64,12 +64,12 @@ func main() {
 		opex := make([]string, 0, 10)
 		if len(expression[0]) < len(expression[1]) {
 			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[0], expression[1])
-			answerex = fmt.Sprintf(expression[0])
-			opex = fmt.Sprintf(expression[1])
+			answerex = mkslice(expression[0])
+			opex = mkslice(expression[1])
 		} else {
 			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[1], expression[0])
-			answerex = fmt.Sprintf(expression[1])
-			opex = fmt.Sprintf(expression[0])
+			answerex = mkslice(expression[1])
+			opex = mkslice(expression[0])
 		}
 
 		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", expression[0], opex)
