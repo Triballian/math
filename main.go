@@ -19,11 +19,13 @@ import (
 func mkslice (s string) []string{
 
 	slength := len(s)
-	ss := make([]string, slength)
+	ss := make([]string, 0, slength)
 	for _, v := range s{
 		ss = append(ss, fmt.Sprintf("%c", v))
 	}
+	fmt.Printf("mkslice ss is :%s\n", ss)
 	return ss
+
 }
 
 func main() {
