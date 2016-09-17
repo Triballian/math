@@ -121,9 +121,9 @@ func main() {
 			for i, _ := range exopnumbers {
 				if len(exopnumbers[i]) > 1 {
 					for _, value := range exopnumbers[i] {
-						if value == "x" {
+						if fmt.Sprintf("%c", value) == "x" {
 							fmt.Printf("number %s, when x = 0 is 0", exopnumbers[i])
-							exopnumbers[i] = 0
+							exopnumbers[i] = "0"
 						}
 					}
 				}
