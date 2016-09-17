@@ -16,6 +16,15 @@ import (
 	"unicode"
 	//"strconv"
 )
+func mkslice (s string) []string{
+
+	slength := len(s)
+	ss := make([]string, slength)
+	for _, v := range s{
+		ss = append(ss, v)
+	}
+	return ss
+}
 
 func main() {
 
@@ -51,22 +60,28 @@ func main() {
 			fmt.Println("Exited at user request.")
 			break
 		}
+		answerex := make([]string, 0, 10)
+		opex := make([]string, 0, 10)
 		if len(expression[0]) < len(expression[1]) {
 			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[0], expression[1])
+			answerex = fmt.Sprintf(expression[0])
+			opex = fmt.Sprintf(expression[1])
 		} else {
 			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[1], expression[0])
+			answerex = fmt.Sprintf(expression[1])
+			opex = fmt.Sprintf(expression[0])
 		}
 
-		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", expression[0], expression[1])
+		fmt.Printf("left side of equation:%s, Right side of equtioin:%s\n", expression[0], opex)
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
 		bufferstrng := make([]string, 0, 10)
-		exzeronumbers := make([]string, 0, 10)
-		exzerooperators := make([]string, 0, 10)
+		exopnumbers := make([]string, 0, 10)
+		opexoperators := make([]string, 0, 10)
 		var bs string
 		counter := 0
 
-		for _, value := range expression[0] {
+		for _, value := range answerex {
 			counter++
 
 			//s, _ := strconv.Atoi(value)
@@ -85,8 +100,8 @@ func main() {
 				bs = strings.Join(bufferstrng, "")
 				fmt.Printf("bs is %s \n", bs)
 				//i, _ = strconv.ParseInt(bs, 10, 64)
-				exzeronumbers = append(exzeronumbers, bs)
-				exzerooperators = append(exzerooperators, s)
+				exopnumbers = append(exopnumbers, bs)
+				opexoperators = append(opexoperators, s)
 				bufferstrng = bufferstrng[:0]
 				continue
 			}
@@ -96,12 +111,34 @@ func main() {
 			fmt.Printf("counter is %d \n", counter)
 			if counter == len(expression[0]) {
 				bs = strings.Join(bufferstrng, "")
-				exzeronumbers = append(exzeronumbers, bs)
+				exopnumbers = append(exopnumbers, bs)
 			}
 
 		}
-		fmt.Printf("exzeronumbers :%s \n", exzeronumbers)
-		fmt.Printf("exzerooperators :%s \n", exzerooperators)
+		fmt.Printf("exzeronumbers :%s \n", exopnumbers)
+		fmt.Printf("exzerooperators :%s \n", opexoperators)
+		if len(exopnumbers > 1) {
+			for i, _ := range exopnumbers {
+				if len(exopnumbers[i] > 1) {
+					for _, value := range exopnumbers[i] {
+						if value == "x" {
+							fmt.Printf("number %s, when x = 0 is 0", exopnumbers[i])
+							exopnumbers[i] = 0
+						}
+					}
+				}
+			}
+		}
 
 	}
 }
+
+//func rmspace(fslice []string) []string{
+//
+//	for k, v := range fslice {
+//		if unicode.IsSpace(v) {
+//			continue
+//		}
+//		fslice = append(fslice[:k], fslice[k+1:]...)
+//	}
+//}
