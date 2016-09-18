@@ -122,7 +122,7 @@ func main() {
 		if lenexopno > 1 {
 			for i, _ := range exopnumbers {
 				sn := 0
-				ssn := 0
+
 				en := 0
 				exchar := 0
 
@@ -153,8 +153,9 @@ func main() {
 							en++
 
 							if en == lenexopno {
-								ssn = en - sn
-								exsuffix, _ = strconv.Atoi(exopnumbers[i][ssn:en])
+
+								exsuffix, _ = strconv.Atoi(exopnumbers[i][sn:en])
+								fmt.Printf("exsuffix :%s , en:%d, sn:%d\n", exopnumbers[i][sn:en], en, sn)
 							}
 							continue
 						}
