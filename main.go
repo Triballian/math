@@ -140,8 +140,8 @@ func main() {
 
 						} else if fmt.Sprintf("%c", value) == "y" {
 							sn = en + 2
-							divisor = fmt.Sprintf("%s", exopnumbers[:en])
-							fmt.Printf("else if divisor: %s\n", divisor)
+							divisor = fmt.Sprintf("%s", exopnumbers[i][:en])
+							//fmt.Printf("else if divisor: %s en:%d\n exopnumber[:0]:%s \n", divisor, en, exopnumbers[i][:1])
 							en++
 							continue
 
