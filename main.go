@@ -116,7 +116,7 @@ func main() {
 		}
 		fmt.Printf("exopnumbers :%s \n", exopnumbers)
 		fmt.Printf("opexoperators :%s \n", opexoperators)
-		var divisor string
+		var divisor int
 		var exsuffix int
 		lenexopno := len(exopnumbers)
 		if lenexopno > 1 {
@@ -140,7 +140,8 @@ func main() {
 
 						} else if fmt.Sprintf("%c", value) == "y" {
 							sn = en + 2
-							divisor = fmt.Sprintf("%s", exopnumbers[i][:en])
+							divisor, _ = strconv.Atoi(fmt.Sprintf("%s", exopnumbers[i][:en]))
+							//divisor, _ = strconv.Atoi(exopnumbers[i][:en])
 							//fmt.Printf("else if divisor: %s en:%d\n exopnumber[:0]:%s \n", divisor, en, exopnumbers[i][:1])
 							en++
 							continue
@@ -166,6 +167,16 @@ func main() {
 			}
 		}
 		fmt.Printf("exopnumbers :%s, exsuffix :%d, divisor :%s \n", exopnumbers, exsuffix, divisor)
+		fmt.Printf("y**%d = %d/%d\n", exsuffix, answerex, divisor)
+		answer, _ := strconv.Atoi(strings.Join(answerex, ""))
+		fmt.Printf("ano = %d / %d\n", answer, divisor)
+
+		ano := answer/divisor
+		fmt.Printf("y**%d = %d\n", exsuffix, ano)
+		fmt.Printf("exsuffix:%d mod 2 = %d \n", exsuffix, exsuffix % 2)
+		if exsuffix % 2 == 0 {
+			fmt.Println("This is a function")
+		}
 
 	}
 }
