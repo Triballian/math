@@ -15,6 +15,7 @@ import (
 	"strings"
 	"unicode"
 	//"strconv"
+	"strconv"
 )
 
 func mkslice(s string) []string {
@@ -76,7 +77,7 @@ func main() {
 			opex = mkslice(expression[0])
 		}
 
-		fmt.Printf("operation side of equation:%s, answer side of equtioin:%s\n", answerex, opex)
+		fmt.Printf("opex:%s, answerex:%s\n", opex , answerex)
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
 		bufferstrng := make([]string, 0, 10)
@@ -90,20 +91,19 @@ func main() {
 
 			//s, _ := strconv.Atoi(value)
 
-			s := fmt.Sprintf("%c", value)
+			//s := fmt.Sprintf("%c", value)
 
-
-			if s == `+` || s == `-` {
+			if value == `+` || value == `-` {
 				fmt.Printf("bufferstring is %s \n", bufferstrng)
 				bs = strings.Join(bufferstrng, "")
 				fmt.Printf("bs is %s \n", bs)
 				//i, _ = strconv.ParseInt(bs, 10, 64)
 				exopnumbers = append(exopnumbers, bs)
-				opexoperators = append(opexoperators, s)
+				opexoperators = append(opexoperators, value)
 				bufferstrng = bufferstrng[:0]
 				continue
 			}
-			bufferstrng = append(bufferstrng, s)
+			bufferstrng = append(bufferstrng, value)
 
 			fmt.Printf("The value is:%c \n", value)
 			fmt.Printf("counter is %d \n", counter)
@@ -114,20 +114,57 @@ func main() {
 			}
 
 		}
-		fmt.Printf("exzeronumbers :%s \n", exopnumbers)
-		fmt.Printf("exzerooperators :%s \n", opexoperators)
-		if len(exopnumbers) > 1 {
+		fmt.Printf("exopnumbers :%s \n", exopnumbers)
+		fmt.Printf("opexoperators :%s \n", opexoperators)
+		var divisor string
+		var exsuffix int
+		lenexopno := len(exopnumbers)
+		if lenexopno > 1 {
 			for i, _ := range exopnumbers {
-				if len(exopnumbers[i]) > 1 {
+				sn := 0
+				ssn := 0
+				en := 0
+				exchar := 0
+
+				if lenexopno > 1 {
+
 					for _, value := range exopnumbers[i] {
+						lenexopno = len(exopnumbers[i])
+
 						if fmt.Sprintf("%c", value) == "x" {
-							fmt.Printf("number %s, when x = 0 is 0", exopnumbers[i])
+							fmt.Printf("number %s, when x = 0 is 0.\n", exopnumbers[i])
 							exopnumbers[i] = "0"
+
+							en = 0
+							break
+
+						} else if fmt.Sprintf("%c", value) == "y" {
+							sn = en + 2
+							divisor = fmt.Sprintf("%s", exopnumbers[:en])
+							fmt.Printf("else if divisor: %s\n", divisor)
+							en++
+							continue
+
+						} else if fmt.Sprintf("%c", value) == "*" {
+							exchar++
+
+						} else if fmt.Sprintf("%c", value) != "*" && exchar == 2 {
+							sn++
+							en++
+
+							if en == lenexopno {
+								ssn = en - sn
+								exsuffix, _ = strconv.Atoi(exopnumbers[i][ssn:en])
+							}
+							continue
 						}
+
+						en++
 					}
 				}
 			}
 		}
+		fmt.Printf("exopnumbers :%s, exsuffix :%d, divisor :%s \n", exopnumbers, exsuffix, divisor)
 
 	}
 }
