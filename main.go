@@ -1,21 +1,18 @@
 package main
-
+// y=3x+1 is a funcion of x since for each real number x, the expression 3x + 1 is a unique real number.  
 // determine if the equation is a function
 // for ever input x there is only one output y
 // solve for the output y
 // term1 + or minus term2 ... = y
 import (
-	//"bufio"
 	"bufio"
 	"fmt"
 	"os"
 	//"io"
 	"log"
-	//"strings"
+	"strconv"
 	"strings"
 	"unicode"
-	//"strconv"
-	"strconv"
 )
 
 func mkslice(s string) []string {
@@ -37,6 +34,7 @@ func main() {
 
 	for {
 
+		//text = getuserinput
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Println("\nType the equation to be identified as either a function or not a function")
 		fmt.Print("\n>>")
@@ -44,6 +42,14 @@ func main() {
 		text, err := reader.ReadString('\n')
 		if err != nil {
 			log.Fatal(err)
+		}
+		// is commands? if yes return break need to create a map of commands. and isequation
+		// todo creat http ui
+		// use unit test
+
+		if text == "quit\n" {
+			fmt.Println("Exited at user request.")
+			break
 		}
 
 		ftext := make([]string, 0, 10)
@@ -61,10 +67,6 @@ func main() {
 		expression := strings.Split(fstring, `=`)
 		//fmt.Println(expression)
 
-		if text == "quit\n" {
-			fmt.Println("Exited at user request.")
-			break
-		}
 		answerex := make([]string, 0, 10)
 		opex := make([]string, 0, 10)
 		if len(expression[0]) < len(expression[1]) {
@@ -77,7 +79,7 @@ func main() {
 			opex = mkslice(expression[0])
 		}
 
-		fmt.Printf("opex:%s, answerex:%s\n", opex , answerex)
+		fmt.Printf("opex:%s, answerex:%s\n", opex, answerex)
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
 		bufferstrng := make([]string, 0, 10)
@@ -171,10 +173,10 @@ func main() {
 		answer, _ := strconv.Atoi(strings.Join(answerex, ""))
 		fmt.Printf("ano = %d / %d\n", answer, divisor)
 
-		ano := answer/divisor
+		ano := answer / divisor
 		fmt.Printf("y**%d = %d\n", exsuffix, ano)
-		fmt.Printf("exsuffix:%d mod 2 = %d \n", exsuffix, exsuffix % 2)
-		if exsuffix % 2 == 0 {
+		fmt.Printf("exsuffix:%d mod 2 = %d \n", exsuffix, exsuffix%2)
+		if exsuffix%2 == 0 {
 			fmt.Println("This is a function")
 		}
 
