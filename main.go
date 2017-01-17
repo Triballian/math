@@ -60,8 +60,6 @@ func main() {
 
 		//start commands
 		
-		
-
 		if strings.TrimSpace(text) == "quit" {
 			// fmt.Println("text is %s", text)
 			fmt.Println("Exited at user request.")
@@ -70,7 +68,7 @@ func main() {
 		//end commands
 
 		
-		ftext := make([]string, 0, 10)
+		ftext := make([]string, 0, 20)
 		var fstring string
 
 		for _, value := range text {
