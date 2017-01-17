@@ -15,7 +15,7 @@ import (
 	"unicode"
 )
 
-func prmptforInput() {
+func prmptforInput() string {
 		
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Println("\nType the equation to be identified as either a function or not a function")
@@ -23,13 +23,9 @@ func prmptforInput() {
 
 		text, err := reader.ReadString('\n')
 		if err != nil {
-			log.Fatal(err)
-			break
-			fmt.println("fatal error")
+			log.Fatal(err)			
 		}
 		return text
-
-
 }
 
 func mkslice(s string) []string {
