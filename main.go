@@ -15,6 +15,23 @@ import (
 	"unicode"
 )
 
+func prmptforInput() {
+		
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Println("\nType the equation to be identified as either a function or not a function")
+		fmt.Print("\n>>")
+
+		text, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatal(err)
+			break
+			fmt.println("fatal error")
+		}
+		return text
+
+
+}
+
 func mkslice(s string) []string {
 
 	slength := len(s)
@@ -33,25 +50,26 @@ func main() {
 	//infinite loop to continue evaluating the input expressions
 
 	for {
+		//start input ui
+		text := prmptforInput()
 
 		//text = getuserinput
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Println("\nType the equation to be identified as either a function or not a function")
-		fmt.Print("\n>>")
-
-		text, err := reader.ReadString('\n')
-		if err != nil {
-			log.Fatal(err)
-		}
+		
 		// is commands? if yes return break need to create a map of commands. and isequation
 		// todo creat http ui
 		// use unit test
+		//end input ui
+
+		//start commands
+		
 
 		if text == "quit\n" {
 			fmt.Println("Exited at user request.")
 			break
 		}
+		//end commands
 
+		
 		ftext := make([]string, 0, 10)
 		var fstring string
 
