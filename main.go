@@ -48,6 +48,8 @@ func main() {
 	for {
 		//start input ui
 		text := prmptforInput()
+		
+		
 
 		//text = getuserinput
 		
@@ -58,8 +60,10 @@ func main() {
 
 		//start commands
 		
+		
 
-		if text == "quit\n" {
+		if strings.TrimSpace(text) == "quit" {
+			// fmt.Println("text is %s", text)
 			fmt.Println("Exited at user request.")
 			break
 		}
