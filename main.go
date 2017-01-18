@@ -28,6 +28,37 @@ func prmptforInput() string {
 		return strings.TrimSpace(text)
 }
 
+func sepOperandNanswer(t string) ([]string, []string, []string){
+		f := make([]string, 0, 20)
+		var fstring string
+
+		for _, value := range t {
+			if unicode.IsSpace(value) {
+				continue
+			}
+			fstring = fmt.Sprintf("%c", value)
+			f = append(f, fstring)
+		}
+		fstring = strings.Join(f, "")
+
+		e := strings.Split(fstring, `=`)
+		// fmt.Println("expression = %s", expression)
+
+		a := make([]string, 0, 10)
+		o := make([]string, 0, 10)
+		if len(e[0]) < len(e[1]) {
+			fmt.Printf("The answer portions:%s. The math portion:%s\n", e[0], e[1])
+			a = mkslice(e[0])
+			o = mkslice(e[1])
+		} else {
+			fmt.Printf("The answer portions:%s. The math portion:%s\n", e[1], e[0])
+			a = mkslice(e[1])
+			o = mkslice(e[0])
+		}
+		
+		return a, o, e
+}
+
 func mkslice(s string) []string {
 
 	slength := len(s)
@@ -68,34 +99,11 @@ func main() {
 		//end commands
 
 		
-		ftext := make([]string, 0, 20)
-		var fstring string
-
-		for _, value := range text {
-			if unicode.IsSpace(value) {
-				continue
-			}
-			fstring = fmt.Sprintf("%c", value)
-			ftext = append(ftext, fstring)
-		}
-		fstring = strings.Join(ftext, "")
-
-		expression := strings.Split(fstring, `=`)
-		fmt.Println("expression = %s", expression)
-
-		answerex := make([]string, 0, 10)
-		opex := make([]string, 0, 10)
-		if len(expression[0]) < len(expression[1]) {
-			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[0], expression[1])
-			answerex = mkslice(expression[0])
-			opex = mkslice(expression[1])
-		} else {
-			fmt.Printf("The answer portions:%s. The math portion:%s\n", expression[1], expression[0])
-			answerex = mkslice(expression[1])
-			opex = mkslice(expression[0])
-		}
-
+		
+		// opex answerx start
+		answerex, opex, expression := sepOperandNanswer(text)
 		fmt.Printf("opex:%s, answerex:%s\n", opex, answerex)
+		// opex answerx end
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
 		bufferstrng := make([]string, 0, 10)
