@@ -25,7 +25,7 @@ func prmptforInput() string {
 		if err != nil {
 			log.Fatal(err)			
 		}
-		return text
+		return strings.TrimSpace(text)
 }
 
 func mkslice(s string) []string {
@@ -60,7 +60,7 @@ func main() {
 
 		//start commands
 		
-		if strings.TrimSpace(text) == "quit" {
+		if text == "quit" {
 			// fmt.Println("text is %s", text)
 			fmt.Println("Exited at user request.")
 			break
@@ -81,7 +81,7 @@ func main() {
 		fstring = strings.Join(ftext, "")
 
 		expression := strings.Split(fstring, `=`)
-		//fmt.Println(expression)
+		fmt.Println("expression = %s", expression)
 
 		answerex := make([]string, 0, 10)
 		opex := make([]string, 0, 10)
