@@ -59,6 +59,45 @@ func sepOperandNanswer(t string) ([]string, []string, []string){
 		return a, o, e
 }
 
+func getexopnumbers(o []string, ex []string) []string {
+		bufferstrng := make([]string, 0, 10)
+		e := make([]string, 0, 10)
+		opexoperators := make([]string, 0, 10)
+		var bs string
+		counter := 0
+
+		for _, value := range o {
+			counter++
+
+			//s, _ := strconv.Atoi(value)
+
+			//s := fmt.Sprintf("%c", value)
+
+			if value == `+` || value == `-` {
+				fmt.Printf("bufferstring is %s \n", bufferstrng)
+				bs = strings.Join(bufferstrng, "")
+				fmt.Printf("bs is %s \n", bs)
+				//i, _ = strconv.ParseInt(bs, 10, 64)
+				e = append(e, bs)
+				opexoperators = append(opexoperators, value)
+				bufferstrng = bufferstrng[:0]
+				continue
+			}
+			bufferstrng = append(bufferstrng, value)
+
+			fmt.Printf("The value is:%s \n", value)
+			fmt.Printf("counter is %d \n", counter)
+			if counter == len(ex[0]) {
+				fmt.Println(counter)
+				bs = strings.Join(bufferstrng, "")
+				e = append(e, bs)
+			}
+
+		}
+		fmt.Printf("opexoperators :%s \n", opexoperators)
+		return e
+}
+
 func mkslice(s string) []string {
 
 	slength := len(s)
@@ -97,51 +136,22 @@ func main() {
 			break
 		}
 		//end commands
+		answerex, opex, expression := sepOperandNanswer(text)
+		fmt.Printf("opex:%s, answerex:%s\n", opex, answerex)
 
 		
 		
 		// opex answerx start
-		answerex, opex, expression := sepOperandNanswer(text)
-		fmt.Printf("opex:%s, answerex:%s\n", opex, answerex)
+		
 		// opex answerx end
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
-		bufferstrng := make([]string, 0, 10)
-		exopnumbers := make([]string, 0, 10)
-		opexoperators := make([]string, 0, 10)
-		var bs string
-		counter := 0
-
-		for _, value := range opex {
-			counter++
-
-			//s, _ := strconv.Atoi(value)
-
-			//s := fmt.Sprintf("%c", value)
-
-			if value == `+` || value == `-` {
-				fmt.Printf("bufferstring is %s \n", bufferstrng)
-				bs = strings.Join(bufferstrng, "")
-				fmt.Printf("bs is %s \n", bs)
-				//i, _ = strconv.ParseInt(bs, 10, 64)
-				exopnumbers = append(exopnumbers, bs)
-				opexoperators = append(opexoperators, value)
-				bufferstrng = bufferstrng[:0]
-				continue
-			}
-			bufferstrng = append(bufferstrng, value)
-
-			fmt.Printf("The value is:%c \n", value)
-			fmt.Printf("counter is %d \n", counter)
-			if counter == len(expression[0]) {
-				fmt.Println(counter)
-				bs = strings.Join(bufferstrng, "")
-				exopnumbers = append(exopnumbers, bs)
-			}
-
-		}
+		// get exopnumbers begin
+		exopnumbers := getexopnumbers(opex, expression)
 		fmt.Printf("exopnumbers :%s \n", exopnumbers)
-		fmt.Printf("opexoperators :%s \n", opexoperators)
+		
+		// get exopnumbers end
+		
 		var divisor int
 		var exsuffix int
 		lenexopno := len(exopnumbers)
@@ -192,8 +202,8 @@ func main() {
 				}
 			}
 		}
-		fmt.Printf("exopnumbers :%s, exsuffix :%d, divisor :%s \n", exopnumbers, exsuffix, divisor)
-		fmt.Printf("y**%d = %d/%d\n", exsuffix, answerex, divisor)
+		fmt.Printf("exopnumbers :%s, exsuffix :%d, divisor :%d \n", exopnumbers, exsuffix, divisor)
+		fmt.Printf("y**%d = %s/%d\n", exsuffix, answerex, divisor)
 		answer, _ := strconv.Atoi(strings.Join(answerex, ""))
 		fmt.Printf("ano = %d / %d\n", answer, divisor)
 
