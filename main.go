@@ -100,7 +100,7 @@ func getexopnumbers(o []string, ex []string) []string {
 
 func procexop(e []string) (int, int){
 		var divisor int
-		var exsuffix int
+		var domExSfx int
 		lenexopno := len(e)
 		if lenexopno > 1 {
 			for i, _ := range e {
@@ -109,47 +109,47 @@ func procexop(e []string) (int, int){
 				en := 0
 				exchar := 0
 
-				if lenexopno > 1 {
+				// if lenexopno > 1 {
 
-					for _, value := range e[i] {
-						lenexopno = len(e[i])
+				for _, value := range e[i] {
+					lenexopno = len(e[i])
 
-						if fmt.Sprintf("%c", value) == "x" {
-							fmt.Printf("number %s, when x = 0 is 0.\n", e[i])
-							e[i] = "0"
+					if fmt.Sprintf("%c", value) == "x" {
+						fmt.Printf("number %s, when x = 0 is 0.\n", e[i])
+						e[i] = "0"
 
-							en = 0
-							break
+						en = 0
+						break
 
-						} else if fmt.Sprintf("%c", value) == "y" {
-							sn = en + 2
-							divisor, _ = strconv.Atoi(fmt.Sprintf("%s", e[i][:en]))
-							//divisor, _ = strconv.Atoi(e[i][:en])
-							//fmt.Printf("else if divisor: %s en:%d\n e[:0]:%s \n", divisor, en, e[i][:1])
-							en++
-							continue
-
-						} else if fmt.Sprintf("%c", value) == "*" {
-							exchar++
-
-						} else if fmt.Sprintf("%c", value) != "*" && exchar == 2 {
-							sn++
-							en++
-
-							if en == lenexopno {
-
-								exsuffix, _ = strconv.Atoi(e[i][sn:en])
-								fmt.Printf("exsuffix :%s , en:%d, sn:%d\n", e[i][sn:en], en, sn)
-							}
-							continue
-						}
-
+					} else if fmt.Sprintf("%c", value) == "y" {
+						sn = en + 2
+						divisor, _ = strconv.Atoi(fmt.Sprintf("%s", e[i][:en]))
+						//divisor, _ = strconv.Atoi(e[i][:en])
+						//fmt.Printf("else if divisor: %s en:%d\n e[:0]:%s \n", divisor, en, e[i][:1])
 						en++
+						continue
+
+					} else if fmt.Sprintf("%c", value) == "*" {
+						exchar++
+
+					} else if fmt.Sprintf("%c", value) != "*" && exchar == 2 {
+						sn++
+						en++
+
+						if en == lenexopno {
+
+							domExSfx, _ = strconv.Atoi(e[i][sn:en])
+							fmt.Printf("domExSfx :%s , en:%d, sn:%d\n", e[i][sn:en], en, sn)
+						}
+						continue
 					}
+
+					en++
 				}
+				// }
 			}
 		}
-		return divisor, exsuffix
+		return divisor, domExSfx
 }
 
 func mkslice(s string) []string {
@@ -206,18 +206,18 @@ func main() {
 		
 		// get exopnumbers end
 		// procexop start
-		divisor, exsuffix := procexop(exopnumbers)
+		divisor, domExSfx := procexop(exopnumbers)
 		// procexop end
 		// x is the domain y is the range, there can be only one y answer as a fuction of x.
-		fmt.Printf("exopnumbers :%s, exsuffix :%d, divisor :%d \n", exopnumbers, exsuffix, divisor)
-		fmt.Printf("y**%d = %s/%d\n", exsuffix, answerex, divisor)
+		fmt.Printf("exopnumbers :%s, domExSfx :%d, divisor :%d \n", exopnumbers, domExSfx, divisor)
+		fmt.Printf("y**%d = %s/%d\n", domExSfx, answerex, divisor)
 		answer, _ := strconv.Atoi(strings.Join(answerex, ""))
 		fmt.Printf("ano = %d / %d\n", answer, divisor)
 
 		ano := answer / divisor
-		fmt.Printf("y**%d = %d\n", exsuffix, ano)
-		fmt.Printf("exsuffix:%d mod 2 = %d \n", exsuffix, exsuffix%2)
-		if exsuffix%2 == 0 {
+		fmt.Printf("y**%d = %d\n", domExSfx, ano)
+		fmt.Printf("domExSfx:%d mod 2 = %d \n", domExSfx, domExSfx%2)
+		if domExSfx%2 == 0 {
 			fmt.Println("This is a function")
 		}
 
