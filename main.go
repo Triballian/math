@@ -109,7 +109,6 @@ func procexop(e []string) (int, int){
 				en := 0
 				exchar := 0
 
-				// if lenexopno > 1 {
 
 				for _, value := range e[i] {
 					lenexopno = len(e[i])
@@ -146,7 +145,6 @@ func procexop(e []string) (int, int){
 
 					en++
 				}
-				// }
 			}
 		}
 		return divisor, domExSfx
@@ -183,7 +181,9 @@ func main() {
 		//end input ui
 
 		//start commands
+		fmt.Printf("TEXT : %s", text)
 		
+		// fmt.Printf("T : %s", t)
 		if text == "quit" {
 			// fmt.Println("text is %s", text)
 			fmt.Println("Exited at user request.")
@@ -197,6 +197,7 @@ func main() {
 		// opex answerex start
 		answerex, opex, expression := sepOperandNanswer(text)
 		fmt.Printf("opex:%s, answerex:%s\n", opex, answerex)
+		
 		// opex answerex end
 		// need a slice of number left to right for expression zero
 		// need a slice of operators from left to right for expression0
