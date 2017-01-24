@@ -27,8 +27,8 @@ import "testing"
 // 	}
 
 func TestHsfrst(t *testing.T) {
-	t1 := make([]string, 2, 20)
-	t2 := make([]string, 2, 20)
+	t1 := make([]string, 1, 20)
+	t2 := make([]string, 1, 20)
 
 	t1 = append(t1, `2x**2+3y**2`, "15")
 	t2 = append(t2, "15", `2x**2+3y**2`)
@@ -43,7 +43,7 @@ func TestHsfrst(t *testing.T) {
 	for _, test := range tests {
 		for i := 0; i < 2; {
 			if got := hsfrst(test.input); got[i] != test.want[i] {
-				t.Errorf("IsPalidrome(%q) = %v", test.input, got)
+				t.Errorf("Input Equation(%v) = %v", test.input, got)
 			}
 			i++
 		}
