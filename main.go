@@ -31,7 +31,7 @@ func prmptforInput() string {
 func sepOperandNanswer(t string) ([]string, []string, []string){
 		f := make([]string, 0, 20)
 		var fstring string
-
+		// remove space and convert text into a slice
 		for _, value := range t {
 			if unicode.IsSpace(value) {
 				continue
@@ -44,8 +44,8 @@ func sepOperandNanswer(t string) ([]string, []string, []string){
 		e := strings.Split(fstring, `=`)
 		// fmt.Println("expression = %s", expression)
 
-		a := make([]string, 0, 10)
-		o := make([]string, 0, 10)
+		a := make([]string, 0, 20)
+		o := make([]string, 0, 20)
 		if len(e[0]) < len(e[1]) {
 			fmt.Printf("The answer portions:%s. The math portion:%s\n", e[0], e[1])
 			a = mkslice(e[0])

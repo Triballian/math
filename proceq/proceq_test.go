@@ -1,4 +1,4 @@
-package hsfrst
+package proceq
 
 import "testing"
 
@@ -48,3 +48,5 @@ func TestHsfrst(t *testing.T) {
 	}
 
 }
+
+// func TestSepEx.go

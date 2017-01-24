@@ -1,4 +1,4 @@
-package hsfrst
+package proceq
 
 func hsfrst(s []string) []string {
 
