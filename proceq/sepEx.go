@@ -16,10 +16,14 @@ func sepEx(t string) []string {
 			continue
 		}
 		fstring = fmt.Sprintf("%c", value)
+		// fmt.Printf("%c", value)
 		eq = append(eq, fstring)
+
 	}
+
 	fstring = strings.Join(eq, "")
 
 	eqEx := strings.Split(fstring, `=`)
+	// fmt.Printf("eq is:%v", fstring)
 	return eqEx
 }

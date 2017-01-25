@@ -1,6 +1,9 @@
 package proceq
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // func TestHsfrst(t *testing.T) {
 // 	tv := make([]string, 0, 20)
@@ -27,11 +30,9 @@ import "testing"
 // 	}
 
 func TestHsfrst(t *testing.T) {
-	t1 := make([]string, 1, 20)
-	t2 := make([]string, 1, 20)
 
-	t1 = append(t1, `2x**2+3y**2`, "15")
-	t2 = append(t2, "15", `2x**2+3y**2`)
+	t1 := []string{`2x**2+3y**2`, "15"}
+	t2 := []string{"15", `2x**2+3y**2`}
 
 	var tests = []struct {
 		input []string
@@ -42,11 +43,51 @@ func TestHsfrst(t *testing.T) {
 	}
 	for i, test := range tests {
 		if got := hsfrst(test.input); got[i] != test.want[i] {
-			t.Errorf("Input Equation(%v) = %v", got, test.want)
+			t.Errorf("Input Equation(%v) = %v", test.input, got)
 		}
 		i++
 	}
 
 }
 
-// func TestSepEx.go
+func TestSepEx(t *testing.T) {
+
+	t1 := []string{`2x**2+3y**2`, "15"}
+	t2 := []string{`3x**2+2x+1`, "y"}
+
+	var tests = []struct {
+		input string
+		want  []string
+	}{
+		{`2x**2+3y**2=15`, t1},
+		{`3x**2+2x+1=y`, t2},
+	}
+	for i, test := range tests {
+		if got := sepEx(test.input); got[i] != test.want[i] {
+			fmt.Printf("want is: %v, 	got is:%v", test.want, got)
+			t.Errorf("Input Equation(%v) = %v", test.input, got)
+		}
+		i++
+	}
+}
+
+func TestSepTerms(t *testing.T) {
+
+	t1 := []string{`2x**2`, "3y**2"}
+	t2 := []string{`3x**2`, "2x", "1"}
+
+	var tests = []struct {
+		input string
+		want  []string
+	}{
+		{`2x**2+3y**2`, t1},
+		{`3x**2+2x+1`, t2},
+	}
+	for i, test := range tests {
+		if got := sepTerms(test.input); got[i] != test.want[i] {
+			fmt.Printf("want is: %v, 	got is:%v", test.want, got)
+			t.Errorf("Input Equation(%v) = %v", test.input, got)
+		}
+		i++
+	}
+}
