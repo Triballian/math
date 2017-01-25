@@ -42,7 +42,7 @@ func TestHsfrst(t *testing.T) {
 		{t2, t1},
 	}
 	for i, test := range tests {
-		if got := hsfrst(test.input); got[i] != test.want[i] {
+		if got := hsFrst(test.input); got[i] != test.want[i] {
 			t.Errorf("Input Equation(%v) = %v", test.input, got)
 		}
 		i++
