@@ -1,55 +1,65 @@
 package procterm
 
-type exConst struct {   // expression constant
-    term
+type ExConst struct { // expression constant
+	Term
 	number int
 }
 
-type eCoefficient struct {     // Expression 
-    term
-    number int
+type ECoefficient struct { // Expression
+	Term
+	number int
 }
 
-type xVar struct {               // expression with X Variable Term
-    term
-    eVar string := x
+type XVar struct { // expression with X Variable Term
+	Term
+	// EVar string
+	XV bool
 }
 
-type yVar struct{               // expression with y Variable Term
-    term
-    eVar string := y
+type YVar struct { // expression with y Variable Term
+	Term
+	// EVar string
+	XV bool
 }
 
-type exponX struct {                // X variable with exponent
-    xVar
-    exp     int
+type ExponX struct { // X variable with exponent
+	XVar
+	exp int
 }
 
-type exponY struct {                // y variable with 
-    yVar
-    exp     int
+type ExponY struct { // y variable with
+	YVar
+	exp int
 }
 
-type exponXCoef struct {            // x variable with exponent and coefficient
-    term
-    exponX
-    eCoefficient
+type ExponXCoef struct { // x variable with exponent and coefficient
+	Term
+	ExponX
+	ECoefficient
 }
 
-type exponYCoef  struct {            // y variable with exponent and coefficient
-    term
-    exponY
-    eCoefficient
+type ExponYCoef struct { // y variable with exponent and coefficient
+	Term
+	ExponY
+	ECoefficient
 }
 
-type term struct{
-    position int
-    expression
+type Term struct {
+	Position int // needing to deferintiate terms is why position here is important
+	Expression
 }
 
-type expression struct{ 
-    Eside   string
-    size    int         // number of terms
+// type Sterm struct {
+// 	Position int
+// 	Expression
+// }
+
+// type Tterm struct {
+// 	Position int
+// 	Expression
+// }
+
+type Expression struct {
+	postion = int
+	
 }
-
-

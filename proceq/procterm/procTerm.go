@@ -1,8 +1,8 @@
 package procterm
 
-func procTerm(term string) expression {
-
-	for i, value := range term {
+func procTerm(term []string) {
+	e := Term{}
+	for i, value := range e {
 
 	}
 
