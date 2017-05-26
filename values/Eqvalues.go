@@ -4,7 +4,11 @@
 package values
 
 type fdomain struct {
-	Domain int
+	domain int
+}
+
+type dset struct {
+	Domset []fdomain
 }
 
 type frange struct {
@@ -13,6 +17,6 @@ type frange struct {
 
 // Fmap function map of the Damain to the range.
 type Fmap struct {
-	fdomain
-	[]frange
+	dset
+	frange
 }
