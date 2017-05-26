@@ -1,7 +1,7 @@
 // storage for both each row of domain with its range
 // to be compared to see if the equation is a function
 
-package equation
+package values
 
 type fdomain struct {
 	Domain int
@@ -14,5 +14,5 @@ type frange struct {
 // Fmap function map of the Damain to the range.
 type Fmap struct {
 	fdomain
-	frange
+	[]frange
 }
