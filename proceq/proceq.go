@@ -23,9 +23,9 @@ func procEq(eq []string) {
 	//proces the terms
 
 	// eTerm := procterm.Term{}
-	var eterms []*procterm.Term{}
 
-	term := make(map[int][]*Term)
+	eterms = make([]procterm.Term, len(tem)s, 10)
+	t *[]procterm.Term = &eterms
 
 	position := 0
 
@@ -35,16 +35,19 @@ func procEq(eq []string) {
 		// if len(r) < 2
 		if yVar, present := procterm.TypeTerm(term, "y"); present {
 			position++
-			eTerm.position = position
-			eTerm.Yvar.YV = true
-			eTerm.yvar.ECoefficient = yvar[0]
+			vterms := make(map[int][]procterm.Term)
+			vterms = apend(vterms, vterms[int].position, position)
+			// eTerm.position = position
+			eterms.vTerm[i].Var = "y"
+			eterms.vTerm[i].Coefficient = yVar[0]
 			if eOp, present := procterm.TypTer(yVar[1], "**"); present {
-				eTerm.Yvar.ExponY.exp = int(eOp[2])
+				eterms.vTerm[i].Exponent = int(eOp[2])
 			} else if _, present := procterm.TypeTerm(term, "x"); present {
 				position++
-				eTerm.Xvar.XV = true
+				eterms.vTerm[i].Var = "x"
 			} else {
-				eTerm.ExConst.number = term
+				eterms.vTerm[i].Var = ""
+				eTerm.ExConst.Number = term
 			}
 
 			// if xVar, present := procterm.TypeTerm(term, "x"); present {
