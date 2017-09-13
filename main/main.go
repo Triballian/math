@@ -21,7 +21,7 @@ func proctext(t string, d int) {
 	r := strings.Replace(dnr[1], ";", ",", -1)
 
 	// fd, _ = strconv.Atoi(dnr[0])
-	fm.Fdomain, _ = strconv.Atoi(dnr[0])
+	fm.domain, _ = strconv.Atoi(dnr[0])
 
 
 	for _, i := range r {
@@ -29,9 +29,9 @@ func proctext(t string, d int) {
 		if err != nil {
 			panic(err)
 		}
-		fm.Frange = append(fm.Frange, j)
+		fm.Range = append(fm.Range, j)
 	}
-	f = append(fm.Fdomain, fm.Frange)
+	f = append(fm.domain, fm.range)
 
 }
 
