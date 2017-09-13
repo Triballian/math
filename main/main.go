@@ -29,9 +29,9 @@ func proctext(t string, d int) {
 		if err != nil {
 			panic(err)
 		}
-		fr = append(f.Range, j)
+		fm.Frange = append(fm.Frange, j)
 	}
-	f = append(fm.Fdomain, fr)
+	f = append(fm.Fdomain, fm.Frange)
 
 }
 
