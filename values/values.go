@@ -3,20 +3,21 @@
 
 package values
 
-type fdomain struct {
-	domain int
+type Fdomain struct {
+	Domain int
 }
 
-type dset struct {
-	Domset []fdomain
-}
+// type Dset struct {
+// 	Domset []fdomain
+// }
 
-type frange struct {
+type Frange struct {
 	Range []int
 }
 
 // Fmap function map of the Damain to the range.
+// fap map should be a collection of domain and range instances
 type Fmap struct {
-	dset
-	frange
+	Fdomain
+	Frange
 }
