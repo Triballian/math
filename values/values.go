@@ -15,9 +15,11 @@ type Frange struct {
 	Range []int
 }
 
-// Fmap function map of the Damain to the range.
-// fap map should be a collection of domain and range instances
-type Fmap struct {
+// Fsets function map of the Damain to the range.
+// fsets should be a collection of domain and range instances
+type Fset struct {
 	Fdomain
 	Frange
 }
+
+
