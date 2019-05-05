@@ -1,3 +1,9 @@
+package procqest
+
+import (
+	"fmt"
+	"testing"
+)
 var tests = []struct {
 	input string
 	want  []string
