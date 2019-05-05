@@ -22,4 +22,15 @@ type Fset struct {
 	Frange
 }
 
+type Equation struct {
+	Iseq bool
+}
 
+type Question struct {
+	Q string
+}
+
+type Equestion struct {
+	Equation
+	Question
+}

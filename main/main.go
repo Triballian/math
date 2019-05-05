@@ -65,7 +65,7 @@ func main() {
 		text := prmptforInput(d + 1)
 		proctext(fsets, d)
 		if text == "go" {
-			// fmt.Println("text is %s", text)
+			fmt.Println("text is %s", text)
 			fmt.Println("The results are.")
 			break
 		}
