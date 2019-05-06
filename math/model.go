@@ -1,20 +1,63 @@
 package math
 
 // math var expression var
-type mxvar struct {
-	xvar bool
+// simplify reevaluate, simplify, reevaluate
+type Term interface {
+	// if the var is alone then the nubmber is zero
+	Setnumber() Term
+	Setvars() Term
+	GetTerm() Term
 }
 
-type myvar struct {
-	yvar bool
+// Director
+type ManufacturingDirector struct {
+	Builder Term
 }
 
-type mvar struct {
-	mxvar
-	myvar
+// construct method
+func (f *ManufacturingDirector) Construct() {
+	f.Builder.Setnumber().Setvars()
 }
 
-type term struct {
-	number int
-	mvar   // check if one or the other is not nil
+type Mxvar struct {
+	Xvar bool
+}
+
+type Myvar struct {
+	Yvar bool
+}
+
+type Mvar struct {
+	Mxvar
+	Myvar
+}
+
+// term product
+type TermP struct {
+	Number int
+	Mvar   // check if one or the other is not nil
+}
+
+// type TermBuilder struct {
+// 	// math term
+// 	mt TermProduct
+// }
+
+func (t *TermP) Setnumber(n int) *TermP {
+	t.Number = n
+	return t
+}
+func (t *TermP) Setvars(thisvar string, varval bool) *TermP {
+	if thisvar == "x" || thisvar == "X" {
+		t.Xvar = varval
+	}
+	if thisvar == "y" || thisvar == "Y" {
+		t.Yvar = varval
+	}
+
+	return t
+}
+
+func (t *TermP) GetTerm(x bool) *TermP {
+	return t
 }
