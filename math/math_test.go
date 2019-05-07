@@ -13,9 +13,10 @@ func testmvar(t *testing.T) {
 
 	thisvar := &TermP{}
 	thisvar.Setnumber(4)
+	thisvar.SetExponent(0)
 	thisvar.Setvars("x", true).Setvars("y", false)
 
-	if thisvar.Number != expectednumber {
+	if thisvar.Number == expectednumber {
 		t.Errorf("The expecteed number:%d does not match thisvar.number:%d", expectednumber, thisvar.Number)
 	}
 	if thisvar.Xvar != expectedmxvar {

@@ -1,22 +1,15 @@
 package math
 
+// this file deals with a term
 // math var expression var
 // simplify reevaluate, simplify, reevaluate
+// expression is going to be a composition of terms
 type Term interface {
 	// if the var is alone then the nubmber is zero
 	Setnumber() Term
 	Setvars() Term
+	SetExponent() Term
 	GetTerm() Term
-}
-
-// Director
-type ManufacturingDirector struct {
-	Builder Term
-}
-
-// construct method
-func (f *ManufacturingDirector) Construct() {
-	f.Builder.Setnumber().Setvars()
 }
 
 type Mxvar struct {
@@ -27,6 +20,11 @@ type Myvar struct {
 	Yvar bool
 }
 
+// type Exponent struct {
+// 	// if there is no exponent set this value to 1
+// 	Ex int
+// }
+
 type Mvar struct {
 	Mxvar
 	Myvar
@@ -34,8 +32,9 @@ type Mvar struct {
 
 // term product
 type TermP struct {
-	Number int
-	Mvar   // check if one or the other is not nil
+	Number   int
+	Mvar     // check if one or the other is not nil
+	Exponent int
 }
 
 // type TermBuilder struct {
@@ -45,6 +44,10 @@ type TermP struct {
 
 func (t *TermP) Setnumber(n int) *TermP {
 	t.Number = n
+	return t
+}
+func (t *TermP) SetExponent(n int) *TermP {
+	t.Exponent = n
 	return t
 }
 func (t *TermP) Setvars(thisvar string, varval bool) *TermP {
