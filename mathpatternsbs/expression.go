@@ -41,6 +41,7 @@ func (m *ManufacturingDirector) GetCount() int {
 	return m.count
 }
 
+// end singleton
 // construct method
 func (f *ManufacturingDirector) Construct(termcount int, abssets int, operators int) {
 	f.builder.SetTermCount(termcount).SetABSsets(abssets).SetOperators(operators)
