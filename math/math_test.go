@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func testmvar(t *testing.T) {
+func Testmvar(t *testing.T) {
 
 	expectednumber := 4
 	expectedmxvar := true
