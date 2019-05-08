@@ -12,6 +12,7 @@ import (
 )
 
 func main() {
+	// this file is for test purposes only
 	thisvar := &math.TermP{}
 	thisvar.Setnumber(4)
 	thisvar.Setvars("x", true)

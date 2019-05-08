@@ -12,6 +12,31 @@ type Expression interface {
 // Director
 type ManufacturingDirector struct {
 	builder Expression
+	count   int
+}
+
+//start singleton
+//single Manufacturing director
+// type singleManD struct {
+// 	count int
+// }
+
+var maninstance *ManufacturingDirector
+
+func GetManInstance() *ManufacturingDirector {
+	if maninstance == nil {
+		maninstance = new(ManufacturingDirector)
+	}
+	return maninstance
+}
+
+func (m *ManufacturingDirector) Addone() int {
+	m.count++
+	return m.count
+}
+
+func (m *ManufacturingDirector) GetCount() int {
+	return m.count
 }
 
 // construct method

@@ -28,7 +28,7 @@ func TestMvar(t *testing.T) {
 		t.Errorf("The Expected  yvarbool:%t does not match thisvar.yvar:%t", expectedmyvar, thisvar.Yvar)
 	}
 
-	manufacturingComplex := ManufacturingDirector{}
+	manufacturingComplex := GetManInstance()
 	monomialBuilder := &MonomialBuilder{}
 	manufacturingComplex.SetBuilder(monomialBuilder)
 	manufacturingComplex.Construct(1, 0, 1)
