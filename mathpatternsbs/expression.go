@@ -30,11 +30,13 @@ func GetManInstance() *ManufacturingDirector {
 	return maninstance
 }
 
-func (m *ManufacturingDirector) Addone() int {
+//for testing purposese only
+func (m *ManufacturingDirector) AddOne() int {
 	m.count++
 	return m.count
 }
 
+//for testing purposese only
 func (m *ManufacturingDirector) GetCount() int {
 	return m.count
 }
