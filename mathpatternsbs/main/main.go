@@ -8,7 +8,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Triballian/math/math"
+	math "github.com/Triballian/math/mathpatternsbs"
 )
 
 func main() {

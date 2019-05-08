@@ -1,4 +1,4 @@
-package mathpatternsbs
+package math
 
 // you are going to want the aperator and the location of that operator
 type Expression interface {

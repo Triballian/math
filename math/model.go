@@ -1,4 +1,4 @@
-package mathpatternsbs
+package math
 
 // this file deals with a term
 // math var expression var
