@@ -1,40 +1,62 @@
+// Package math takes some precaculus and automates it
 package math
 
-// this file deals with a term
-// math var expression var
 // simplify reevaluate, simplify, reevaluate
+
+// Term the interface for part of an expression
 // expression is going to be a composition of terms
 type Term interface {
 	// if the var is alone then the nubmber is zero
-	Setnumber() Term
-	Setvars() Term
-	SetExponent() Term
+	// every term has a coefficietn even if that coeficient is one
+	SetNumericCoefficient(int) Term
+	SetVariableCoefficient(rune) Term // x or y or empty '' rune, convert any to lowercase
+	// each side of an equation is an expression
+	// types of coeficeint positive, negative, fractional
+	SetIsSquareRooted(bool) // bool
+
+	SetExponent(int) Term
 	GetTerm() Term
-}
-
-type Mxvar struct {
-	Xvar bool
-}
-
-type Myvar struct {
-	Yvar bool
+	// is it a paranthesized expression, is it a square rooted expression
+	// is it a paranthesized term, is it a square rooted term
+	// use slices to hold expressions so that size can be easily determined
+	// use slices to hold terms.
+	// perhaps i can do this with the same interface types , since there will be different types of terms
 }
 
 // type Exponent struct {
 // 	// if there is no exponent set this value to 1
 // 	Ex int
 // }
-
-type Mvar struct {
-	Mxvar
-	Myvar
+type TManufacturingDirector struct {
+	builder Term
 }
 
+var tmaninstance *TManufacturingDirector
+
 // term product
+
+func GetManInstance() *TManufacturingDirector {
+	if taninstance == nil {
+		maninstance = new(TManufacturingDirector)
+	}
+	return tmaninstance
+}
+
+// TConstruct construct method
+func (f *TManufacturingDirector) TConstruct(termcount int, abssets int, operators int) {
+	f.builder.SetNumericCoefficient(NumericCoefficient).SetVariableCoefficient(VariableCoefficient).IsSquareRooted(bool).SetExponent(Exponent)
+}
+
+//EManufacturingDirector Expression Manufacturing Director
+func (f *EManufacturingDirector) SetTBuilder(t Term) {
+	t.builder = b
+}
+
 type TermP struct {
-	Number   int
-	Mvar     // check if one or the other is not nil
-	Exponent int
+	NumericCoefficient  int
+	VariableCoefficient rune
+	IsSquareRooted      bool
+	Exponent            int
 }
 
 // type TermBuilder struct {
@@ -42,8 +64,16 @@ type TermP struct {
 // 	mt TermProduct
 // }
 
-func (t *TermP) Setnumber(n int) *TermP {
+type ConstantTern struct {
+	v TermP
+}
+
+func (t *TermP) SetNumericCoefficient(n int) *TermP {
 	t.Number = n
+	return t
+}
+func (t *TermP) SetVariableCoefficient(v rune) *TermP {
+	t.VariableCoefficient = v
 	return t
 }
 func (t *TermP) SetExponent(n int) *TermP {

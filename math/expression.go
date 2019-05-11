@@ -9,45 +9,27 @@ type Expression interface {
 	GetMathExpression() ExpressionProduct
 }
 
-// Director
-type ManufacturingDirector struct {
+// EManufacturingDirector Manufacturing Director
+type EManufacturingDirector struct {
 	builder Expression
-	count   int
 }
 
-//start singleton
-//single Manufacturing director
-// type singleManD struct {
-// 	count int
-// }
+var maninstance *EManufacturingDirector
 
-var maninstance *ManufacturingDirector
-
-func GetManInstance() *ManufacturingDirector {
+func GetManInstance() *EManufacturingDirector {
 	if maninstance == nil {
-		maninstance = new(ManufacturingDirector)
+		maninstance = new(EManufacturingDirector)
 	}
 	return maninstance
 }
 
-//for testing purposese only
-func (m *ManufacturingDirector) AddOne() int {
-	m.count++
-	return m.count
-}
-
-//for testing purposese only
-func (m *ManufacturingDirector) GetCount() int {
-	return m.count
-}
-
 // construct method
-func (f *ManufacturingDirector) Construct(termcount int, abssets int, operators int) {
+func (f *EManufacturingDirector) Construct(termcount int, abssets int, operators int) {
 	f.builder.SetTermCount(termcount).SetABSsets(abssets).SetOperators(operators)
 }
 
-//setBuilder Method
-func (f *ManufacturingDirector) SetBuilder(b Expression) {
+//EManufacturingDirector Expression Manufacturing Director
+func (f *EManufacturingDirector) SetBuilder(b Expression) {
 	f.builder = b
 }
 
