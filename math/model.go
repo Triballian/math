@@ -44,8 +44,9 @@ func GetTManInstance() *TManufacturingDirector {
 }
 
 // TConstruct construct method
-func (f *TManufacturingDirector) TConstruct(numericCoefficient int, variableCoefficient rune, isSquareRooted bool, exponent int) {
-	f.builder.SetNumericCoefficient(numericCoefficient).SetVariableCoefficient(variableCoefficient).SetIsSquareRooted(isSquareRooted).SetExponent(exponent)
+func (f *TManufacturingDirector) TConstruct(isParenthesesed bool, isSquareRooted bool, exponent int, numericCoefficient int, variableCoefficient rune) {
+	f.builder.SetIsParenthesesed(isParenthesesed).SetIsSquareRooted(isSquareRooted).SetExponent(exponent)
+	f.builder.SetNumericCoefficient(numericCoefficient).SetVariableCoefficient(variableCoefficient)
 }
 
 //EManufacturingDirector Expression Manufacturing Director
@@ -76,7 +77,7 @@ func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
 	return c
 }
 func (c *ConstantTerm) SetIsSquareRooted(s bool) Term {
-	c.v.IsSquareRooted = s
+	c.v.SquareRooted = s
 	return c
 }
 func (c *ConstantTerm) SetExponent(e int) Term {
@@ -112,7 +113,7 @@ type VarTerm struct {
 	v TermP
 }
 
-func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
+func (c *VarTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
 }
@@ -141,7 +142,7 @@ type VarCoeefficientTerm struct {
 	v TermP
 }
 
-func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
+func (c *VarCoeefficientTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
 }
