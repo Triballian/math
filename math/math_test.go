@@ -10,10 +10,12 @@ func TestMvar(t *testing.T) {
 	expectednumber := 4
 	expectedmxvar := true
 	expectedmyvar := true
-	//manufacturingComplex := ManufacturingDirector{}
+	// tmanufacturingComplex := TManufacturingDirector{}
+	tmanufacturingComplex := GetTManInstance()
+	constantBuilder := &ConstantTerm{}
 
 	thisvar := &TermP{}
-	thisvar.Setnumber(4)
+	thisvar.SetNumericCoefficient(4)
 	thisvar.SetExponent(0)
 	thisvar.Setvars("x", true).Setvars("y", true)
 
@@ -57,7 +59,7 @@ type testCase struct {
 	expectedmoperators int
 }
 
-func TestMany(t *testing.T) {
+func TestManyExpressions(t *testing.T) {
 	manufacturingComplex := GetManInstance()
 	monomialBuilder := &MonomialBuilder{}
 	manufacturingComplex.SetBuilder(monomialBuilder)

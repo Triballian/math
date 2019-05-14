@@ -8,6 +8,7 @@ package math
 type Term interface {
 	// if the var is alone then the nubmber is zero
 	// every term has a coefficietn even if that coeficient is one
+	SetIsABSed(bool) Term
 	SetIsParenthesesed(bool) Term
 	SetIsSquareRooted(bool) Term // bool
 	SetExponent(int) Term
@@ -44,8 +45,8 @@ func GetTManInstance() *TManufacturingDirector {
 }
 
 // TConstruct construct method
-func (f *TManufacturingDirector) TConstruct(isParenthesesed bool, isSquareRooted bool, exponent int, numericCoefficient int, variableCoefficient rune) {
-	f.builder.SetIsParenthesesed(isParenthesesed).SetIsSquareRooted(isSquareRooted).SetExponent(exponent)
+func (f *TManufacturingDirector) TConstruct(isABSed bool, isParenthesesed bool, isSquareRooted bool, exponent int, numericCoefficient int, variableCoefficient rune) {
+	f.builder.SetIsABSed(isABSed).SetIsParenthesesed(isParenthesesed).SetIsSquareRooted(isSquareRooted).SetExponent(exponent)
 	f.builder.SetNumericCoefficient(numericCoefficient).SetVariableCoefficient(variableCoefficient)
 }
 
@@ -55,6 +56,7 @@ func (f *TManufacturingDirector) SetTBuilder(t Term) {
 }
 
 type TermP struct {
+	IsABSed             bool
 	IsParenthesesed     bool
 	SquareRooted        bool
 	Exponent            int
@@ -66,12 +68,73 @@ type TermP struct {
 // 	// math term
 // 	mt TermProduct
 // }
+type ABSedTerm struct {
+	v TermP
+}
+
+func (c *ABSedTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
+func (c *ABSedTerm) SetIsParenthesesed(s bool) Term {
+	c.v.IsParenthesesed = s
+	return c
+}
+func (c *ABSedTerm) SetIsSquareRooted(s bool) Term {
+	c.v.SquareRooted = s
+	return c
+}
+func (c *ABSedTerm) SetExponent(e int) Term {
+	c.v.Exponent = e
+	return c
+}
+func (c *ABSedTerm) SetNumericCoefficient(n int) Term {
+	c.v.NumericCoefficient = n
+	return c
+}
+func (c *ABSedTerm) SetVariableCoefficient(v rune) Term {
+	c.v.VariableCoefficient = v
+	return c
+}
+
+func (c *ABSedTerm) GetTerm() TermP {
+	return c.v
+}
 
 type ConstantTerm struct {
 	v TermP
 }
 
 //even thought the types are created virtually identically we can identify instance for its specific type symplifying or even dictating the operations that are applied to it.
+func (c *ConstantTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
+func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
+	c.v.IsParenthesesed = s
+	return c
+}
+func (c *ConstantTerm) SetIsSquareRooted(s bool) Term {
+	c.v.SquareRooted = s
+	return c
+}
+func (c *ConstantTerm) SetExponent(e int) Term {
+	c.v.Exponent = e
+	return c
+}
+func (c *ConstantTerm) SetNumericCoefficient(n int) Term {
+	c.v.NumericCoefficient = n
+	return c
+}
+func (c *ConstantTerm) SetVariableCoefficient(v rune) Term {
+	c.v.VariableCoefficient = v
+	return c
+}
+
+func (c *ConstantTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
 func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
@@ -113,6 +176,10 @@ type VarTerm struct {
 	v TermP
 }
 
+func (c *VarTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
 func (c *VarTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
@@ -142,6 +209,10 @@ type VarCoeefficientTerm struct {
 	v TermP
 }
 
+func (c *VarCoeefficientTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
 func (c *VarCoeefficientTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
@@ -172,6 +243,10 @@ type SquareRootedTerm struct {
 	v TermP
 }
 
+func (c *SquareRootedTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
 func (c *SquareRootedTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c
@@ -201,6 +276,10 @@ type ExponentedTerm struct {
 	v TermP
 }
 
+func (c *ExponentedTerm) SetIsABSed(s bool) Term {
+	c.v.IsABSed = s
+	return c
+}
 func (c *ExponentedTerm) SetIsParenthesesed(s bool) Term {
 	c.v.IsParenthesesed = s
 	return c

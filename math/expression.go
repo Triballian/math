@@ -4,7 +4,7 @@ package math
 type Expression interface {
 	SetTermCount(int) Expression
 	//absolute values
-	SetABSsets(int) Expression
+	// SetABSsets(int) Expression
 	SetOperators(int) Expression
 	GetMathExpression() ExpressionProduct
 }
@@ -24,8 +24,8 @@ func GetManInstance() *EManufacturingDirector {
 }
 
 // construct method
-func (f *EManufacturingDirector) Construct(termcount int, abssets int, operators int) {
-	f.builder.SetTermCount(termcount).SetABSsets(abssets).SetOperators(operators)
+func (f *EManufacturingDirector) Construct(termcount int, operators int) {
+	f.builder.SetTermCount(termcount).SetOperators(operators)
 }
 
 //EManufacturingDirector Expression Manufacturing Director
@@ -35,7 +35,7 @@ func (f *EManufacturingDirector) SetBuilder(b Expression) {
 
 type ExpressionProduct struct {
 	TermCount int
-	ABSsets   int
+	// ABSsets   int
 	Operators int
 }
 
@@ -57,10 +57,10 @@ func (m *MonomialBuilder) SetTermCount(c int) Expression {
 	return m
 }
 
-func (m *MonomialBuilder) SetABSsets(abs int) Expression {
-	m.v.ABSsets = abs
-	return m
-}
+// func (m *MonomialBuilder) SetABSsets(abs int) Expression {
+// 	m.v.ABSsets = abs
+// 	return m
+// }
 
 func (m *MonomialBuilder) SetOperators(o int) Expression {
 	m.v.Operators = o
@@ -82,10 +82,11 @@ func (b *BinomialBuilder) SetTermCount(c int) Expression {
 	}
 	return b
 }
-func (b *BinomialBuilder) SetABSsets(abs int) Expression {
-	b.v.ABSsets = abs
-	return b
-}
+
+// func (b *BinomialBuilder) SetABSsets(abs int) Expression {
+// 	b.v.ABSsets = abs
+// 	return b
+// }
 
 func (b *BinomialBuilder) SetOperators(o int) Expression {
 	b.v.Operators = o
@@ -107,10 +108,11 @@ func (t *TrinomialBuilder) SetTermCount(c int) Expression {
 	}
 	return t
 }
-func (t *TrinomialBuilder) SetABSsets(abs int) Expression {
-	t.v.ABSsets = abs
-	return t
-}
+
+// func (t *TrinomialBuilder) SetABSsets(abs int) Expression {
+// 	t.v.ABSsets = abs
+// 	return t
+// }
 
 func (t *TrinomialBuilder) SetOperators(o int) Expression {
 	t.v.Operators = o
