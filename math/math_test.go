@@ -14,20 +14,20 @@ func TestMvar(t *testing.T) {
 	tmanufacturingComplex := GetTManInstance()
 	constantBuilder := &ConstantTerm{}
 
-	thisvar := &TermP{}
-	thisvar.SetNumericCoefficient(4)
-	thisvar.SetExponent(0)
-	thisvar.Setvars("x", true).Setvars("y", true)
+	// thisvar := &TermP{}
+	constantBuilder.TConstruct(0, 0, false, 1, 15, "")
+	// constantBuilder.SetExponent(0)
+	// constantBuilder.Setvars("x", true).Setvars("y", true)
 
-	if thisvar.Number != expectednumber {
-		t.Errorf("The expecteed number:%d does not match thisvar.number:%d", expectednumber, thisvar.Number)
+	if constantBuilder.Number != expectednumber {
+		t.Errorf("The expecteed number:%d does not match thisvar.number:%d", expectednumber, constantBuilder.Number)
 	}
-	if thisvar.Xvar != expectedmxvar {
-		t.Errorf("The expected xvar bool:%t does not match thisvar.xvar:%t", expectedmxvar, thisvar.Xvar)
+	if constantBuilder.Xvar != expectedmxvar {
+		t.Errorf("The expected xvar bool:%t does not match thisvar.xvar:%t", expectedmxvar, constantBuilder.Xvar)
 	}
 
 	if thisvar.Yvar != expectedmyvar {
-		t.Errorf("The Expected  yvarbool:%t does not match thisvar.yvar:%t", expectedmyvar, thisvar.Yvar)
+		t.Errorf("The Expected  yvarbool:%t does not match thisvar.yvar:%t", expectedmyvar, constantBuilder.Yvar)
 	}
 
 	manufacturingComplex := GetManInstance()
