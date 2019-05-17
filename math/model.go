@@ -106,30 +106,6 @@ type ConstantTerm struct {
 }
 
 //even thought the types are created virtually identically we can identify instance for its specific type symplifying or even dictating the operations that are applied to it.
-func (c *ConstantTerm) SetIsABSed(s bool) Term {
-	c.v.IsABSed = s
-	return c
-}
-func (c *ConstantTerm) SetIsParenthesesed(s bool) Term {
-	c.v.IsParenthesesed = s
-	return c
-}
-func (c *ConstantTerm) SetIsSquareRooted(s bool) Term {
-	c.v.SquareRooted = s
-	return c
-}
-func (c *ConstantTerm) SetExponent(e int) Term {
-	c.v.Exponent = e
-	return c
-}
-func (c *ConstantTerm) SetNumericCoefficient(n int) Term {
-	c.v.NumericCoefficient = n
-	return c
-}
-func (c *ConstantTerm) SetVariableCoefficient(v rune) Term {
-	c.v.VariableCoefficient = v
-	return c
-}
 
 func (c *ConstantTerm) SetIsABSed(s bool) Term {
 	c.v.IsABSed = s
